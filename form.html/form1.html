@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        span{
+            color: red;
+        }
+    </style>
+    <script>
+        var str="";
+        function validation(name,errmsg){
+            var str="";
+             str=document.getElementById(name).value;
+            if(str==="" || (str.trim().length===0)){
+                document.getElementById(errmsg).innerHTML="feild the data";
+                return false;
+            }
+            document.getElementById(errmsg).innerHTML="";
+            return str;
+           
+        }
+        var str1=""
+        function validateskills(){
+            str1="";
+            var cnt=0;
+            var arr=document.getElementsByName("skills");
+            for(i=0;i<arr.length;i++){
+                if(arr[i].checked){
+                    str1=str1+arr[i].value+",";
+                    cnt++;
+                }
+            }
+                if(cnt=>2){
+                    document.getElementById("errskill").innerHTML="";
+                    str1=str1.slice(0,str1.length-1)
+                    return str1
+                }else{
+                    document.getElementById("errskill").innerHTML="min 3 skills should be selected";
+                    return false;
+                }
+            }
+
+        
+        function validate(){
+            var flag1=validation('nm','errnm');
+            var flag2=validation('email','err1');
+            var flag3=validateskills();
+            if(flag1 && flag2 && flag3){
+                var result ="Name : "+flag1+" Email :"+flag2+" Skills : "+flag3;
+                document.getElementById("mydiv").innerHTML=result;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table border="2" cellspacing="0px" cellpadding="10px">
+            <tbody>
+               <tr>
+                <td>
+                    <label >Name</label>
+                </td>
+                <td>
+                    <input type="text" name="nm" id="nm">
+                    <span>*</span>
+                    <span id="errnm"></span>
+                </td>
+                
+               </tr>
+               <tr>
+                <td>
+                    <label >Email</label>
+                </td>
+                <td>
+                    <input type="text" name="email" id="email">
+                    <span>*</span>
+                    <span id="err1"></span>
+                </td>
+               </tr>
+               <tr><td>Skills : </td>
+                <td>
+                <input type="checkbox" name="skills" id="C++" value="C++">
+                <label for="C++">C++</label>
+                <input type="checkbox" name="skills" id="C" value="C">
+                <label for="C">C</label>
+                <input type="checkbox" name="skills" id="C+" value="C+">
+                <label for="C+">C+</label>
+                <span>*</span>
+                <span id="errskill"></span>
+
+               </td></tr>
+               <tr><td>
+                <button type="button" name="btn" id="btn" value="btn" onclick="validate()">Submit</button>
+               </td></tr> 
+               
+            </tbody>
+
+        </table>
+        <div id="mydiv"></div>
+
+    </form>
+    
+</body>
+</html>-

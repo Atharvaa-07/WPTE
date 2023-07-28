@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <h2>Print the message no. of n times</h2>
+    <style>
+        span{
+            color: red;
+        }
+    </style>
+    <script>
+        function validatenumbers(num1,errmsg) {
+            var a=document.getElementById(num1).value;
+            if(a==="" || isNaN(a))
+            {
+                document.getElementById(errmsg).innerHTML="enter valid number";
+                return false;
+            }
+            else{
+                document.getElementById(errmsg).innerHTML="";
+                return true;
+            }
+
+        }
+        function validate()
+        {
+            var b=validatenumbers("num","sp");
+            if(b)
+            {
+                printmesg();
+            }
+        }
+
+        function printmesg()
+        {
+            var n=parseInt(document.getElementById("num").value);
+            var c=document.getElementById("msg").value;
+            for(let i=1;i<=10;i++){
+                var mul=i*n;
+                document.getElementById("out").innerHTML+=i+" * "+n+" = "+mul+" " 
+            }
+
+           
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        Enter the Number :<br><input type="text" id="num" name="num">
+        <span >*</span>
+        <span id="sp"></span>
+        <br>
+
+        <br>
+        Enter the text :<br><input type="text" id="msg" name="msg" ></input><br>
+        <br>
+        Output:<br><textarea id="out" rows="4" cols="30" disabled ></textarea>
+       
+        <br>
+        <br>
+        <button type="button" id="click" value="click" onclick="validate()">Print</button>
+    </form>
+    <!-- <div id="dic1"></div> -->
+</body>
+
+</html>
