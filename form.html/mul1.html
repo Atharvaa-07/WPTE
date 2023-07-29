@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        function validation(num1,errmsg){
+            var str=""
+            str=document.getElementById(num1).value;
+            if(str==="" || isNaN(str)){
+                document.getElementById(errmsg).innerHTML="Enter valid number";
+                return false;
+            }else{
+                document.getElementById(errmsg).innerHTML="";
+                return true;
+            }
+        }
+        function validate(){
+            var flag1= validation('num','errnum');
+            if(flag1){
+                var n=parseInt(document.getElementById("num").value);
+                for(let i=1;i<=10;i++){
+                    var mul=i*n;
+                    document.getElementById("mydiv").innerHTML+="\n"+i+" * "+n+" = "+mul
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <b>Number :</b>
+                        <input type="text" name="num" id="num" placeholder="Number">
+                        <span>*</span>
+                        <span id="errnum"></span>
+                    </td>
+                    <td>
+                        <button type="button" id="click" value="click" onclick="validate()">
+                            Print
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <span id="mydiv">Table</span>
+    </form>
+</body>
+</html>
